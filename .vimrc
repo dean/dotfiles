@@ -1,3 +1,7 @@
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
 set incsearch
 set number
 set shiftwidth=4
@@ -11,22 +15,35 @@ set autoindent
 set smartindent
 set cindent
 set paste
+set ruler
+set backspace=indent,eol,start
+set colorcolumn=80
+set ai
+set autoindent
+set paste
+
         
-" Auto complete stuff
+" Wildcard stuff
 set wildmenu
 set wildmode=list:longest,full
-set wildignore+=*.pyc
-set completeopt=menuone,longest ",preview
+set completeopt=menuone,longest
 set pumheight=6
-
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+set paste
 
 " Show trailing whitespace and spaces.
-:highlight ExtraWhiteSpace ctermbg=red guibg=red
-autocmd Syntax * syn match ExtraWhiteSpace /\s\+$\| \+\ze\t/ containedin=ALL
 autocmd BufWinLeave * call clearmatches()
+autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
 
-" Removes trailing white spaces
-autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
-colorscheme ron
+set t_Co=256
+colorscheme devbox-dark-256 
+
+" colorscheme greens
+
+
+set undofile
+set undolevels=1000
+set undodir=~/.vim/tmp/undo/
+set backupdir=~/.vim/tmp/backup/
+set directory=~/.vim/tmp/swap/
+set backup
